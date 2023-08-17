@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="color_text">#5B1CAE</color>
+    <color name="bac_constrain">#EEFFFFFF</color>
+    <color name="btn_color">#7DF1D5</color>
+    <color name="green">#2CAF2C</color>
+    <color name="red">#C51C1C</color>
+
+
+
+</resources>

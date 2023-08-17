@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/cplusFragment"
+        android:name="com.example.quizprojectapp.fragment.CplusFragment"
+        android:label="fragment_cplus"
+        tools:layout="@layout/fragment_cplus" />
+    <fragment
+        android:id="@+id/javaFragment"
+        android:name="com.example.quizprojectapp.fragment.JavaFragment"
+        android:label="fragment_java"
+        tools:layout="@layout/fragment_java" />
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.quizprojectapp.fragment.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_javaFragment"
+            app:destination="@id/javaFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_cplusFragment"
+            app:destination="@id/cplusFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_pythonFragment"
+            app:destination="@id/pythonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pythonFragment"
+        android:name="com.example.quizprojectapp.fragment.PythonFragment"
+        android:label="fragment_python"
+        tools:layout="@layout/fragment_python" />
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.quizprojectapp.fragment.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" />
+</navigation>
