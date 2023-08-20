@@ -1,11 +1,9 @@
 package com.example.quizprojectapp.adapter
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +14,8 @@ import com.example.quizprojectapp.databinding.ItemQuestionsBinding
 class QuestionsAdapter : ListAdapter<QuestionsModel, QuestionsAdapter.QuestionsViewHolder>(QuestionsDiff()) {
 
     private val answeredQuestions = mutableSetOf<Int>()
+    private val selectedAnswers = mutableMapOf<Int, Int>()
+
     private var onAnswerClickListener: OnAnswerClickListener? = null
 
     interface OnAnswerClickListener {
@@ -27,7 +27,7 @@ class QuestionsAdapter : ListAdapter<QuestionsModel, QuestionsAdapter.QuestionsV
     }
 
     inner class QuestionsViewHolder(val binding: ItemQuestionsBinding) : RecyclerView.ViewHolder(binding.root) {
-        private var correctAnswerIndex: Int = -1
+        private var correctAnswerIndex: Int = 0
         private var isAnswered: Boolean = false
 
         init {
@@ -42,7 +42,9 @@ class QuestionsAdapter : ListAdapter<QuestionsModel, QuestionsAdapter.QuestionsV
                 isAnswered = true
                 answeredQuestions.add(adapterPosition)
 
-                if (correctAnswerIndex == selectedIndex) {
+                selectedAnswers[adapterPosition] = selectedIndex
+
+                if (selectedAnswers[adapterPosition] == correctAnswerIndex) {
                     setAnswerBackground(selectedIndex, R.color.green)
                 } else {
                     setAnswerBackground(selectedIndex, R.color.red)
@@ -67,21 +69,21 @@ class QuestionsAdapter : ListAdapter<QuestionsModel, QuestionsAdapter.QuestionsV
             binding.tvAnswerC.text = model.answer[2]
             binding.tvAnswerD.text = model.answer[3]
 
-            correctAnswerIndex = model.currentAnswer.toInt() - 1
+            correctAnswerIndex = model.currentAnswer.toInt()
             isAnswered = answeredQuestions.contains(adapterPosition)
+
             if (isAnswered) {
-                setAnswerBackground(correctAnswerIndex, if (correctAnswerIndex ==correctAnswerIndex ) R.color.green else R.color.red)
+                if (correctAnswerIndex == selectedAnswers[adapterPosition]) {
+                    setAnswerBackground(correctAnswerIndex, R.color.green)
+                } else {
+                    setAnswerBackground(selectedAnswers[adapterPosition] ?: -1, R.color.red)
+                }
             } else {
-                resetBackground()
+                setAnswerBackground(-1, R.color.white)
             }
+
         }
 
-        private fun resetBackground() {
-            binding.linerA.setBackgroundResource(R.color.white)
-            binding.linerB.setBackgroundResource(R.color.white)
-            binding.linerC.setBackgroundResource(R.color.white)
-            binding.linerD.setBackgroundResource(R.color.white)
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestionsViewHolder {
@@ -94,6 +96,7 @@ class QuestionsAdapter : ListAdapter<QuestionsModel, QuestionsAdapter.QuestionsV
 
     fun clearAnsweredQuestions() {
         answeredQuestions.clear()
+        selectedAnswers.clear()
         notifyDataSetChanged()
     }
 }

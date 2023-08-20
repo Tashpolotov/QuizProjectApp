@@ -19,6 +19,7 @@
         >
 
         <ImageView
+            android:id="@+id/img_back"
             android:layout_width="60dp"
             android:layout_height="60dp"
             app:layout_constraintTop_toTopOf="parent"
@@ -35,7 +36,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="1/5"
+            android:text="@string/score"
             android:textSize="36sp"
             android:textColor="@color/white"
             android:fontFamily="@font/poppins"
@@ -67,7 +68,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/btn_color"
-        android:text="Next"
+        android:text="@string/nextt"
         android:gravity="center"
         android:fontFamily="@font/poppins"
         android:textAllCaps="false"

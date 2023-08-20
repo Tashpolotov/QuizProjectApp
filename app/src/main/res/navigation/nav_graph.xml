@@ -3,18 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/pageFragment">
 
     <fragment
         android:id="@+id/cplusFragment"
         android:name="com.example.quizprojectapp.fragment.CplusFragment"
         android:label="fragment_cplus"
-        tools:layout="@layout/fragment_cplus" />
+        tools:layout="@layout/fragment_cplus" >
+        <action
+            android:id="@+id/action_cplusFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+        <action
+            android:id="@+id/action_cplusFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/javaFragment"
         android:name="com.example.quizprojectapp.fragment.JavaFragment"
         android:label="fragment_java"
-        tools:layout="@layout/fragment_java" />
+        tools:layout="@layout/fragment_java" >
+        <action
+            android:id="@+id/action_javaFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+        <action
+            android:id="@+id/action_javaFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.quizprojectapp.fragment.MainFragment"
@@ -29,15 +43,62 @@
         <action
             android:id="@+id/action_mainFragment_to_pythonFragment"
             app:destination="@id/pythonFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
     </fragment>
     <fragment
         android:id="@+id/pythonFragment"
         android:name="com.example.quizprojectapp.fragment.PythonFragment"
         android:label="fragment_python"
-        tools:layout="@layout/fragment_python" />
+        tools:layout="@layout/fragment_python" >
+        <action
+            android:id="@+id/action_pythonFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+        <action
+            android:id="@+id/action_pythonFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/resultFragment"
         android:name="com.example.quizprojectapp.fragment.ResultFragment"
         android:label="fragment_result"
-        tools:layout="@layout/fragment_result" />
+        tools:layout="@layout/fragment_result" >
+        <action
+            android:id="@+id/action_resultFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_resultFragment_to_pythonFragment"
+            app:destination="@id/pythonFragment" />
+        <action
+            android:id="@+id/action_resultFragment_to_javaFragment"
+            app:destination="@id/javaFragment" />
+        <action
+            android:id="@+id/action_resultFragment_to_cplusFragment"
+            app:destination="@id/cplusFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.quizprojectapp.settingfragment.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pageFragment"
+        android:name="com.example.quizprojectapp.onBoarding.ViewPager2Fragment"
+        android:label="fragment_page"
+        tools:layout="@layout/fragment_page" />
+    <fragment
+        android:id="@+id/boardFragment"
+        android:name="com.example.quizprojectapp.onBoarding.BoardFragment"
+        android:label="fragment_board"
+        tools:layout="@layout/fragment_board" />
+
+
 </navigation>

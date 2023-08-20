@@ -12,6 +12,7 @@ import com.example.domain.model.ProgrammerModel
 import com.example.quizprojectapp.R
 import com.example.quizprojectapp.adapter.MainAdapter
 import com.example.quizprojectapp.databinding.FragmentMainBinding
+import com.example.quizprojectapp.settingfragment.SettingFragment
 import com.example.quizprojectapp.viewmodel.QuizViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -47,17 +48,33 @@ class MainFragment : Fragment() {
             }
         }
         viewModel.loadProgrammer(id)
+        binding.imgSetting.setOnClickListener{
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fr_container, SettingFragment())
+                .addToBackStack(null)
+                .commit()
+        }
     }
 
     private fun onClick(model: ProgrammerModel) {
-        val bundle = Bundle().apply {
-            putString("categoryName", model.name) // Передаем имя категории
-        }
 
-        when (model.id) {
-            "1" -> findNavController().navigate(R.id.action_mainFragment_to_cplusFragment, bundle)
-            "2" -> findNavController().navigate(R.id.action_mainFragment_to_javaFragment, bundle)
-            "3" -> findNavController().navigate(R.id.action_mainFragment_to_pythonFragment, bundle)
-        }
+            when (model.name) {
+                "Python" ->
+                    parentFragmentManager.beginTransaction()
+                        .replace(R.id.fr_container, PythonFragment())
+                        .addToBackStack(null)
+                        .commit()
+                "Java" ->
+                    parentFragmentManager.beginTransaction()
+                        .replace(R.id.fr_container, JavaFragment())
+                        .addToBackStack(null)
+                        .commit()
+                "C++" ->
+                    parentFragmentManager.beginTransaction()
+                        .replace(R.id.fr_container, CplusFragment())
+                        .addToBackStack(null)
+                        .commit()
+
+            }
     }
 }

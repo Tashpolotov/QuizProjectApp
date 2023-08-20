@@ -26,11 +26,22 @@ class QuizViewModel @Inject constructor(val repository: QuizRepository):ViewMode
 
     fun loadQuestionsCplus(name:String) {
         viewModelScope.launch {
-            Log.d("QuizViewModel", "Loading questions for category: $name")
             val questionsCplus = repository.getQuestionsCplus(name)
-            Log.d("QuizViewModel", "Loading questions for category: $name")
             _programmer.value = _programmer.value.copy(questionsCplus = questionsCplus)
-            Log.d("QuizViewModel", "Loading questions for category: $name")
+        }
+    }
+
+    fun loadQuestionsJava(name:String) {
+        viewModelScope.launch {
+            val questionsJava = repository.getQuestionsJava(name)
+            _programmer.value = _programmer.value.copy(questionsJava = questionsJava)
+        }
+    }
+
+    fun loadQuestionsPython(name:String) {
+        viewModelScope.launch {
+            val questionsPythone = repository.getQuestionsPython(name)
+            _programmer.value = _programmer.value.copy(questionsPythone = questionsPythone)
         }
     }
 }

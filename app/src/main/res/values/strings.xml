@@ -2,4 +2,28 @@
     <string name="app_name">QuizProjectApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="result_message">Правильных ответов: %1$d из %2$d</string>
+    <string name="next">Пропустить</string>
+    <string name="welcome">Добро пожаловать в наше приложение!</string>
+    <string name="name_pril">F O O T B A L L</string>
+    <string name="score">1/5</string>
+    <string name="nextt">Next</string>
+    <string name="score_java">1/5</string>
+    <string name="next_java">Next</string>
+    <string name="score_python">1/5</string>
+    <string name="next_python">Next</string>
+    <string name="restart">Restart</string>
+    <string name="menu">Menu</string>
+    <string name="sound">SOUND</string>
+    <string name="java">Java</string>
+    <string name="questions">Questions</string>
+    <string name="questions_1">Ты кто</string>
+    <string name="a">A</string>
+    <string name="answer_1">Ty kto skaji</string>
+    <string name="b">B</string>
+    <string name="answer_2">Ty kto skaji</string>
+    <string name="c">C</string>
+    <string name="answer_3">Ty kto skaji</string>
+    <string name="d">D</string>
+    <string name="answer_4">Ty kto skaji</string>
 </resources>
